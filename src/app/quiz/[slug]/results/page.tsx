@@ -31,7 +31,7 @@ export default function Page({ }: Props) {
                             <p className="text-muted-foreground mt-24 text-center">Úžasne! Dokončili ste quizz, s výbornou úspešnosťou <br /> <span className="text-blue-600">{questionsRight}/{questionsRight + questionsWrong}</span> otázok správne.</p>
                         </div>
 
-                        <Link href='/' onClick={handleResetStore} className={buttonVariants()}>Naspäť</Link>
+                        <Link href='/' onClick={handleResetStore} className={buttonVariants({ className: "mt-4" })}>Naspäť</Link>
 
                     </div>
 
