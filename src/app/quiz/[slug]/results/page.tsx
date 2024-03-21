@@ -7,7 +7,7 @@ import ReactConfetti from "react-confetti"
 
 type Props = {}
 
-export default function page({ }: Props) {
+export default function Page({ }: Props) {
     const [questionsRight, questionsWrong, setQuestionsRight, setQuestionsWrong] = useQuizzStore(state => [state.questionsRight, state.questionsWrong, state.setQuestionsRight, state.setQuestionsWrong])
 
     const handleResetStore = () => {
