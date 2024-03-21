@@ -20,11 +20,11 @@ model Questions {
   id                                       BigInt    @id @default(autoincrement())
   created_at                               DateTime  @default(now()) @db.Timestamptz(6)
   title                                    String
-  correctAnswer                            BigInt
-  quizz                                    BigInt
+  correctAnswer                            BigInt?
+  quizz                                    BigInt?
   Answers_Answers_questionToQuestions      Answers[] @relation("Answers_questionToQuestions")
-  Answers_Questions_correctAnswerToAnswers Answers   @relation("Questions_correctAnswerToAnswers", fields: [correctAnswer], references: [id], map: "public_Questions_correctAnswers_fkey")
-  Quizzes_Questions_quizzToQuizzes         Quizzes   @relation("Questions_quizzToQuizzes", fields: [quizz], references: [id], onDelete: Cascade, map: "public_Questions_quizz_fkey")
+  Answers_Questions_correctAnswerToAnswers Answers?  @relation("Questions_correctAnswerToAnswers", fields: [correctAnswer], references: [id], onDelete: Restrict, map: "public_Questions_correctAnswers_fkey")
+  Quizzes_Questions_quizzToQuizzes         Quizzes?  @relation("Questions_quizzToQuizzes", fields: [quizz], references: [id], onDelete: Cascade, map: "public_Questions_quizz_fkey")
   Quizzes_Quizzes_idToQuestions            Quizzes?  @relation("Quizzes_idToQuestions")
 }
 

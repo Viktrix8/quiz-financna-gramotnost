@@ -15,7 +15,7 @@ type ExtendedQuestion = QuestionsType & {
 
 type Props = {
     quizz: Quizzes & {
-        Questions_Questions_quizzToQuizz: ExtendedQuestion[]
+        Questions_Questions_quizzToQuizzes: ExtendedQuestion[]
     }
 }
 
@@ -25,7 +25,7 @@ export default function Questions({ quizz }: Props) {
     const router = useRouter()
 
     const handleNextQuestion = () => {
-        if (questionIndex < quizz.Questions_Questions_quizzToQuizz.length - 1) {
+        if (questionIndex < quizz.Questions_Questions_quizzToQuizzes.length - 1) {
             setQuestionIndex(questionIndex + 1)
             setIsSelectedAnswer(false)
         } else {
@@ -33,7 +33,7 @@ export default function Questions({ quizz }: Props) {
         }
     }
 
-    const isLastQuestion = questionIndex === quizz.Questions_Questions_quizzToQuizz.length - 1
+    const isLastQuestion = questionIndex === quizz.Questions_Questions_quizzToQuizzes.length - 1
 
     return (
         <div className="max-w-xl flex-1 flex flex-col mx-auto">
@@ -42,14 +42,14 @@ export default function Questions({ quizz }: Props) {
                     <ArrowLeft className="text-white" />
                 </Link>
                 <div className="p-2">
-                    {questionIndex + 1}/{quizz.Questions_Questions_quizzToQuizz.length}
+                    {questionIndex + 1}/{quizz.Questions_Questions_quizzToQuizzes.length}
                 </div>
             </div>
 
             <div className="p-5 bg-white text-black flex-1 rounded-3xl my-24 flex flex-col">
                 <div className="flex-1">
-                    <h2 className="scroll-m-20 text-3xl font-light tracking-tight leading-snug">{quizz.Questions_Questions_quizzToQuizz[questionIndex].title}</h2>
-                    <AnswerList onSelectAnswer={setIsSelectedAnswer} answers={quizz.Questions_Questions_quizzToQuizz[questionIndex].Answers_Answers_questionToQuestions} correctAnswear={quizz.Questions_Questions_quizzToQuizz[questionIndex].correctAnswer} />
+                    <h2 className="scroll-m-20 text-3xl font-light tracking-tight leading-snug">{quizz.Questions_Questions_quizzToQuizzes[questionIndex].title}</h2>
+                    <AnswerList onSelectAnswer={setIsSelectedAnswer} answers={quizz.Questions_Questions_quizzToQuizzes[questionIndex].Answers_Answers_questionToQuestions} correctAnswear={quizz.Questions_Questions_quizzToQuizzes[questionIndex].correctAnswer} />
                 </div>
 
                 <Button onClick={handleNextQuestion} disabled={!isSelectedAnswer}>

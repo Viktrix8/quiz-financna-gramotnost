@@ -16,7 +16,7 @@ const fetchQuizz = async (slug: string) => {
                 slug
             },
             include: {
-                Questions_Questions_quizzToQuizz: {
+                Questions_Questions_quizzToQuizzes: {
                     include: {
                         Answers_Answers_questionToQuestions: true,
                         Answers_Questions_correctAnswerToAnswers: true
@@ -26,7 +26,7 @@ const fetchQuizz = async (slug: string) => {
         })
         if (!quizz) return
 
-        quizz.Questions_Questions_quizzToQuizz = _.shuffle(quizz.Questions_Questions_quizzToQuizz)
+        quizz.Questions_Questions_quizzToQuizzes = _.shuffle(quizz.Questions_Questions_quizzToQuizzes)
         return quizz
     } catch (error) {
         console.error(error)
