@@ -4,11 +4,11 @@ import { Button } from "@/components/ui/button"
 import { ArrowLeft } from "lucide-react"
 import Link from "next/link"
 import AnswerList from "@/components/answer-list"
-import { Answers, Questions, Quizzes } from "@prisma/client"
+import { Answers, Questions as QuestionsType, Quizzes } from "@prisma/client"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 
-type ExtendedQuestion = Questions & {
+type ExtendedQuestion = QuestionsType & {
     Answers_Answers_questionToQuestions: Answers[],
     correctAnswer: Answers
 }
