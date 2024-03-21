@@ -43,7 +43,7 @@ export default async function page({ params: { slug } }: Props) {
 
 
     return (
-        <div className="bg-blue-950 flex min-h-screen p-10 text-white">
+        <div className=" flex min-h-screen p-10 text-white">
             {/* @ts-ignore */}
             <Questions quizz={quizz} />
         </div>

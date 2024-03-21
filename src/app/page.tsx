@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="p-10 h-screen bg-blue-950 text-white flex">
+    <div className="p-10 h-screen text-white flex">
       <div className="flex flex-col flex-1 max-w-xl mx-auto">
         <div className="flex-1">
           <h1 className="scroll-m-20 text-4xl font-bold tracking-tight lg:text-5xl">

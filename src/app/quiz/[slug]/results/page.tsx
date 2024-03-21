@@ -21,7 +21,7 @@ export default function Page({ }: Props) {
                 width={2000}
                 height={1000}
             />
-            <div className="bg-blue-950 flex min-h-screen p-10 text-white">
+            <div className="flex min-h-screen p-10 text-white">
                 <div className="max-w-xl flex-1 flex flex-col mx-auto">
                     <div className="p-5 bg-white text-black flex-1 rounded-3xl my-24 flex flex-col">
                         <div className="flex-1 flex flex-col items-center">
