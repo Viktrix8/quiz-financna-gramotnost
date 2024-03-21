@@ -1,0 +1,37 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Answers {
+  id                                         BigInt      @id @default(autoincrement())
+  created_at                                 DateTime    @default(now()) @db.Timestamptz(6)
+  title                                      String
+  question                                   BigInt
+  Questions_Answers_questionToQuestions      Questions   @relation("Answers_questionToQuestions", fields: [question], references: [id], onDelete: Cascade, map: "public_Answers_question_fkey")
+  Questions_Questions_correctAnswerToAnswers Questions[] @relation("Questions_correctAnswerToAnswers")
+}
+
+model Questions {
+  id                                       BigInt    @id @default(autoincrement())
+  created_at                               DateTime  @default(now()) @db.Timestamptz(6)
+  title                                    String
+  correctAnswer                            BigInt
+  quizz                                    BigInt
+  Answers_Answers_questionToQuestions      Answers[] @relation("Answers_questionToQuestions")
+  Answers_Questions_correctAnswerToAnswers Answers   @relation("Questions_correctAnswerToAnswers", fields: [correctAnswer], references: [id], map: "public_Questions_correctAnswers_fkey")
+  Quizzes_Questions_quizzToQuizzes         Quizzes   @relation("Questions_quizzToQuizzes", fields: [quizz], references: [id], onDelete: Cascade, map: "public_Questions_quizz_fkey")
+  Quizzes_Quizzes_idToQuestions            Quizzes?  @relation("Quizzes_idToQuestions")
+}
+
+model Quizzes {
+  id                                 BigInt      @id(map: "Quizz_pkey") @default(autoincrement())
+  created_at                         DateTime    @default(now()) @db.Timestamptz(6)
+  slug                               String      @unique(map: "Quizz_slug_key")
+  Questions_Questions_quizzToQuizzes Questions[] @relation("Questions_quizzToQuizzes")
+  Questions_Quizzes_idToQuestions    Questions   @relation("Quizzes_idToQuestions", fields: [id], references: [id], map: "public_Quizz_id_fkey")
+}
