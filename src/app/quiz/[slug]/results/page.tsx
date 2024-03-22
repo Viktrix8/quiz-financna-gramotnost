@@ -27,7 +27,7 @@ export default function Page({ }: Props) {
                         <div className="flex-1 flex flex-col items-center">
                             <h2 className="scroll-m-20 mt-24 text-3xl tracking-tight leading-snug font-semibold">Gratulujeme 🎉</h2>
                             <p className="text-7xl text-blue-600 font-bold mt-12">{(questionsRight + questionsWrong) - questionsWrong}</p>
-                            <p className="text-muted-foreground">Bodov</p>
+                            <p className="text-muted-foreground">Body</p>
                             <p className="text-muted-foreground mt-24 text-center">Úžasne! Dokončili ste quizz, s výbornou úspešnosťou <br /> <span className="text-blue-600">{questionsRight}/{questionsRight + questionsWrong}</span> otázok správne.</p>
                         </div>
 

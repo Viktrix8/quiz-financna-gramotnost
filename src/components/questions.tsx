@@ -49,7 +49,7 @@ export default function Questions({ quizz }: Props) {
             <div className="p-5 bg-white text-black flex-1 rounded-3xl my-6 flex flex-col">
                 <div className="flex-1">
                     <h2 className="scroll-m-20 text-3xl font-light tracking-tight leading-snug">{quizz.Questions_Questions_quizzToQuizzes[questionIndex].title}</h2>
-                    <AnswerList onSelectAnswer={setIsSelectedAnswer} answers={quizz.Questions_Questions_quizzToQuizzes[questionIndex].Answers_Answers_questionToQuestions} correctAnswear={quizz.Questions_Questions_quizzToQuizzes[questionIndex].correctAnswer} />
+                    <AnswerList key={quizz.Questions_Questions_quizzToQuizzes[questionIndex].id} onSelectAnswer={setIsSelectedAnswer} answers={quizz.Questions_Questions_quizzToQuizzes[questionIndex].Answers_Answers_questionToQuestions} correctAnswear={quizz.Questions_Questions_quizzToQuizzes[questionIndex].correctAnswer} />
                 </div>
 
                 <Button onClick={handleNextQuestion} disabled={!isSelectedAnswer}>

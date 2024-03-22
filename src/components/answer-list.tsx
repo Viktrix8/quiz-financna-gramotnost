@@ -13,19 +13,22 @@ type Props = {
 }
 
 export default function AnswearList({ answers, correctAnswear, onSelectAnswer }: Props) {
-    const [selectedAnswearId, setSelectedAnswearId] = useState<BigInt | null>(null);
+    const [selectedAnswerId, setSelectedAnswerId] = useState<BigInt | null>(null);
     const [setQuestionsRight, setQuestionsWrong, questionsRight, questionsWrong] = useQuizzStore(state => [state.setQuestionsRight, state.setQuestionsWrong, state.questionsRight, state.questionsWrong])
 
     return (
         <div className="flex flex-col space-y-6 mt-4">
             {answers.map((answer) => {
-                const isSelected = selectedAnswearId === answer.id;
+                const isSelected = selectedAnswerId === answer.id;
                 const isCorrect = correctAnswear === answer.id;
                 const bgColor = isSelected && (isCorrect ? "bg-emerald-100" : "bg-red-100");
 
+                console.log(isSelected)
                 return (
                     <div onClick={() => {
-                        setSelectedAnswearId(answer.id);
+                        if (selectedAnswerId) return;
+
+                        setSelectedAnswerId(answer.id);
                         onSelectAnswer(true);
 
                         if (isCorrect) {
